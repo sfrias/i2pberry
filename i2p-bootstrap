@@ -128,7 +128,7 @@ fi
 #Set firewall rules to allow SSH and I2P
 ufw default deny
 ufw allow 2121
-ufw allow 7657
+ufw allow 7654
 ufw allow $i2pport
 
 #Reload Fail2ban and SSH
