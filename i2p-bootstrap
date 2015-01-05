@@ -114,8 +114,8 @@ else
 fi
 
 #Check to ensure config file has generated before setting firewall rules
-# Wait up to 10 seconds for router.config to be created.
-wait_until 10 "test -e /var/lib/i2p/i2p-config/router.config"
+# Wait up to 30 seconds for router.config to be created.
+wait_until 30 "test -e /var/lib/i2p/i2p-config/router.config"
 i2pport=$(awk -F= '/i2np\.udp\.port/{print $2}' $I2PHOME/router.config)
 
 if [ x$i2pport = 'x' ]; then
@@ -128,6 +128,7 @@ fi
 #Set firewall rules to allow SSH and I2P
 ufw default deny
 ufw allow 2121
+ufw allow 7657
 ufw allow $i2pport
 
 #Reload Fail2ban and SSH
