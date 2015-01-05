@@ -1,5 +1,8 @@
-i2pberry
-========
+I2Pberry
+
+VJ2.1.1 https://github.com/m6urns/i2pberry/blob/master/torrents/i2pberry_VJ2.1.1.zip.torrent?raw=true
+
+VJ2.1.1_live
 
 2.1.1 is the latest release. It comes in two versions, 
 VJ2.1.1 the standard user configured version and VJ2.1.1_live 
