@@ -1,4 +1,15 @@
 i2pberry
 ========
 
-Repository of key files for the I2PBerry project. You can find prebuilt donwloads on our main site (yes I know its a text file, a real site is hopefully forthcoming). http://paste.roguecoders.com/p/ccc866b18df1f6c67f3fc60bf4428b05.txt
+2.1.1 is the latest release. It comes in two versions, 
+VJ2.1.1 the standard user configured version and VJ2.1.1_live 
+i2p is already installed, configured and on first boot will 
+connect to the i2p darknet.
+
+I've been watching the development of i2pd and I'm waiting 
+for their release of an offical ARM port. Once that happens
+VC1.0 will be relased, hopefully performance will
+be greatly improved.
+
+All versions will be distributed via torrent, found in the 
+torrents directory.
