@@ -8,7 +8,8 @@ All versions will be distributed via torrent, found in the
 torrents directory.
 
 #####Features
-
+   
+   - Fully featured installation of I2P
    - Fail2ban for login monitoring
    - SSH hardening (changed the port, disabled root login,
      really more of a deterrent)
