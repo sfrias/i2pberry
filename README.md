@@ -68,4 +68,10 @@ Setup
    #clientApp.0.args=7657 0.0.0.0 ./webapps/
    ```
 
+  If your having trouble with the connecting to the webui through the fire wall 
+  you can open a port to traffic using 
 
+  ```
+  sudo ufw allow 7657
+  
+  ```
