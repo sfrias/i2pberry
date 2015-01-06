@@ -1,4 +1,4 @@
-I2Pberry
+###I2Pberry
 
 VJ2.1.1r1: https://github.com/m6urns/i2pberry/blob/master/torrents/i2pberry_VJ2.1.1r1.img.zip.torrent?raw=true
 
@@ -7,27 +7,33 @@ MD5: f146043309715027879f98e9b117cc0a
 All versions will be distributed via torrent, found in the
 torrents directory.
 
-Features
+#####Features
 
    - Fail2ban for login monitoring
-   - SSH hardening (changed the port, I really don't consider that hardening)
-   - Firewall hardening
+   - SSH hardening (changed the port, disabled root login,
+     really more of a deterrent)
+   - UFW for firewalling
 
-Working On
+#####Working On
 
    - Version taking advantage of I2Pd
+     - I've been watching the development of i2pd and I'm waiting 
+       for their release of an offical ARM port. Once that happens
+       VC1.0 will be relased, hopefully performance will
+       be greatly improved.
    - Onion routeresq plug n play easiness
-
-   - I've been watching the development of i2pd and I'm waiting 
-     for their release of an offical ARM port. Once that happens
-     VC1.0 will be relased, hopefully performance will
-     be greatly improved.
+   - Some integration with ufw so ports don't have to be opened 
+     manually
+     - Maybe some kind of integration with the intial bootstrap
+       script giving you the option to open extra user selected
+       ports
+   - Automate opening console to network traffic, with user input.
 
 I love suggustions!
 
 
 
-Setup
+###Setup
 
    user:raspberry
 
@@ -73,5 +79,6 @@ Setup
 
   ```
   sudo ufw allow 7657
-  
   ```
+  Because of the firewall, you need to manually open ports, the process is identical
+  to what is detailed above, only the port will change.
