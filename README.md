@@ -1,7 +1,8 @@
 I2Pberry
 
-VJ2.1.1 https://github.com/m6urns/i2pberry/blob/master/torrents/i2pberry_VJ2.1.1.zip.torrent?raw=true
-MD5: bd5eade0245aab4c02589df17ca7ee0f
+VJ2.1.1r1: https://github.com/m6urns/i2pberry/blob/master/torrents/i2pberry_VJ2.1.1r1.img.zip.torrent?raw=true
+
+MD5: f146043309715027879f98e9b117cc0a
 
 All versions will be distributed via torrent, found in the
 torrents directory.
