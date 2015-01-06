@@ -57,12 +57,14 @@ Setup
    network access. If you do, use a PASSWORD! (Configure that from the webui)
    
    Comment out this line:
-
+   
+   ```
    clientApp.0.args=7657 ::1,127.0.0.1 ./webapps/
-
+   ```
    And uncomment this line:
-
+   
+   ```
    #clientApp.0.args=7657 0.0.0.0 ./webapps/
-
+   ```
 
 
