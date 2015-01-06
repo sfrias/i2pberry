@@ -48,9 +48,21 @@ Setup
    /usr/bin It must be run as root. 
    Allow it to do it's thing, respond intelligently to prompts.
 
-5. Lynx will open, configure your bandwidth settings and if you want configure
-   I2P so it can be accessed from your local network. If you open it to outside 
-   network traffic you really need to put a password on.
+5. Lynx will open, configure your bandwidth and any other settings.
 
    You will now need to login on the 2121 SSH port. Due to "hardening". Also root
    login is disabled on SSH. So you will need to use user.
+
+6. You may need to configure /var/lib/i2p/i2p-config/clients.config to allow local 
+   network access. If you do, use a PASSWORD! (Configure that from the webui)
+   
+   Comment out this line:
+
+   clientApp.0.args=7657 ::1,127.0.0.1 ./webapps/
+
+   And uncomment this line:
+
+   #clientApp.0.args=7657 0.0.0.0 ./webapps/
+
+
+
