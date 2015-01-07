@@ -86,11 +86,18 @@ I love suggustions!
 
   List of ports you may want open:
 
+  7657 Console*
+  
   4444 HTTP Proxy*
+  
   4445 HTTPS Proxy*
+  
   6668 IRC
+  
   8998 Monotone
+  
   7659 SMTP
+  
   7660 POP3 
 
-  * These are open by default, maybe you want to close them, I don't know.
+  *These are open by default, maybe you want to close them, I don't know.
