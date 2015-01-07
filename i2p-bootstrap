@@ -146,8 +146,7 @@ ufw enable
 echo
 
 #Open Lynx For Bandwidth Configuration
-echo "Lynx will open so that I2P's bandwidth settings can be configured." >&2
-echo '(385KBps will be about 1TB per month)' >&2
+echo "Lynx will open so that I2P can be configured." >&2
 echo -n "Press y when ready: "
 read ans
 case $ans in
