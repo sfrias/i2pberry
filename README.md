@@ -83,3 +83,14 @@ I love suggustions!
   ```
   Because of the firewall, you need to manually open ports, the process is identical
   to what is detailed above, only the port will change.
+
+  List of ports you may want open:
+
+  4444 HTTP Proxy*
+  4445 HTTPS Proxy*
+  6668 IRC
+  8998 Monotone
+  7659 SMTP
+  7660 POP3 
+
+  * These are open by default, maybe you want to close them, I don't know.
