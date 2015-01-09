@@ -73,6 +73,11 @@ if ! apt-key fingerprint | fgrep -q "7840 E761 0F28 B904 7535  49D7 67EC E560 5B
     fi
 fi
 
+# Add the Java repo key if apt doesn't know about it yet
+if ! apt-key fingerprint | fgrep -q "7B2C 3B08 89BF 5709 A105  D03A C251 8248 EEA1 4886" > /dev/null 2>&1; then
+   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+fi
+
 apt-get update
 # preseed debconf to set I2P to start at boot
 echo "i2p i2p/daemon boolean true" | debconf-set-selections
@@ -85,7 +90,7 @@ echo "i2p i2p/daemon boolean true" | debconf-set-selections
 #fi
 echo "i2p i2p/user string i2psvc" | debconf-set-selections
 apt-get --yes upgrade
-apt-get --yes install fail2ban ufw i2p i2p-keyring lynx
+apt-get --yes install fail2ban ufw i2p i2p-keyring lynx oracle-java8-installer
 
 
 #Configure SSH

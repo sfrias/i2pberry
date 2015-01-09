@@ -97,7 +97,6 @@ echo "i2p i2p/user string i2psvc" | debconf-set-selections
 apt-get --yes upgrade
 apt-get --yes install fail2ban ufw i2p i2p-keyring lynx oracle-java8-installer
 
-
 #Configure SSH
 if [ -e /etc/ssh/sshd_config.backup ]; then
     echo "SSH already configured during a previous run."
