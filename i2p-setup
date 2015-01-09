@@ -62,6 +62,11 @@ deb http://deb.i2p2.no/ stable main
 #deb-src http://deb.i2p2.no/ stable main
 EOF
 
+cat  > /etc/apt/sources.list.d/java.list << EOF
+deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
+#deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
+EOF
+
 # Add the I2P repo key if apt doesn't know about it yet
 if ! apt-key fingerprint | fgrep -q "7840 E761 0F28 B904 7535  49D7 67EC E560 5BCF 1346" > /dev/null 2>&1; then
     if wget --quiet https://geti2p.net/_static/i2p-debian-repo.key.asc -O $TMPFILE; then
