@@ -95,7 +95,7 @@ echo "i2p i2p/daemon boolean true" | debconf-set-selections
 #fi
 echo "i2p i2p/user string i2psvc" | debconf-set-selections
 apt-get --yes upgrade
-apt-get --yes install fail2ban ufw i2p i2p-keyring lynx oracle-java8-installer
+apt-get --yes install oracle-java8-installer fail2ban ufw i2p i2p-keyring lynx
 
 
 #Configure SSH
