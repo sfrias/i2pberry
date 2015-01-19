@@ -17,6 +17,8 @@ Mirror: http://git.repo.i2p/w/i2pberry.git
      really more of a deterrent)
    - UFW for firewalling
 
+   Thanks to David at https://github.com/TheTinHat for the updated installtion  script!
+
 #####Working On
 
    - Version taking advantage of I2Pd
