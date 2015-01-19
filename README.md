@@ -13,11 +13,10 @@ Mirror: http://git.repo.i2p/w/i2pberry.git
    
    - Fully featured installation of I2P
    - Fail2ban for login monitoring
-   - SSH hardening (changed the port, disabled root login,
-     really more of a deterrent)
+   - SSH hardening (changed the port, disabled root login, really more of a deterrent)
    - UFW for firewalling
 
-   Thanks to David at https://github.com/TheTinHat for the updated installtion  script!
+   Thanks to David at https://github.com/TheTinHat for the updated installation  script!
 
 #####Working On
 
