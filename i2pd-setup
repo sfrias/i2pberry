@@ -34,10 +34,14 @@ echo "Ensure that either the root password or sudo have been configured">&2
 echo "Any errors, downtime, or other generally negative outcome is your">&2
 echo "own responsibility.">&2
 echo>&2
+echo "This version of I2Pberry uses a precomiled I2Pd binary!">&2
+echo "Support for the option to self-compile is in the works.">&2
+echo>&2
 echo "The following changes will be made:">&2
-echo "--Add the I2P Repositories">&2
+#echo "--Add the I2P Repositories">&2
 echo "--Update the system's packages">&2
-echo "--Install I2P, Fail2ban, UFW, Lynx">&2
+echo "--I2Pd is installed Fail2ban, UFW, Lynx">&2
+echo "--Install Fail2ban, UFW, Lynx">&2
 echo "--Change the SSH port to 2121">&2
 echo "--Disable Root Login">&2
 echo "--Configure I2P to automatically start at boot">&2
@@ -57,31 +61,31 @@ case $ans in
 esac
 
 #Edit Repos, Update System
-cat  > /etc/apt/sources.list.d/i2p.list << EOF
-deb http://deb.i2p2.no/ stable main
+#cat  > /etc/apt/sources.list.d/i2p.list << EOF
+#deb http://deb.i2p2.no/ stable main
 #deb-src http://deb.i2p2.no/ stable main
-EOF
+#EOF
 
-cat  > /etc/apt/sources.list.d/java.list << EOF
-deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
+#cat  > /etc/apt/sources.list.d/java.list << EOF
+#deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
 #deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
-EOF
+#EOF
 
 # Add the I2P repo key if apt doesn't know about it yet
-if ! apt-key fingerprint | fgrep -q "7840 E761 0F28 B904 7535  49D7 67EC E560 5BCF 1346" > /dev/null 2>&1; then
-    if wget --quiet https://geti2p.net/_static/i2p-debian-repo.key.asc -O $TMPFILE; then
-        apt-key add $TMPFILE
-        rm -f $TMPFILE
-    else
+#if ! apt-key fingerprint | fgrep -q "7840 E761 0F28 B904 7535  49D7 67EC E560 5BCF 1346" > /dev/null 2>&1; then
+#    if wget --quiet https://geti2p.net/_static/i2p-debian-repo.key.asc -O $TMPFILE; then
+#        apt-key add $TMPFILE
+#        rm -f $TMPFILE
+#    else
         # Since fetching with wget failed, let's try getting it from a keyserver
-        apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0x67ECE5605BCF1346
-    fi
-fi
+#        apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0x67ECE5605BCF1346
+#    fi
+#fi
 
 # Add the Java repo key if apt doesn't know about it yet
-if ! apt-key fingerprint | fgrep -q "7B2C 3B08 89BF 5709 A105  D03A C251 8248 EEA1 4886" > /dev/null 2>&1; then
-   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
-fi
+#if ! apt-key fingerprint | fgrep -q "7B2C 3B08 89BF 5709 A105  D03A C251 8248 EEA1 4886" > /dev/null 2>&1; then
+#   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+#fi
 
 apt-get update
 # preseed debconf to set I2P to start at boot
@@ -93,9 +97,10 @@ echo "i2p i2p/daemon boolean true" | debconf-set-selections
 #if ! getent passwd i2p; then
 #    adduser --system --quiet --group --home /home/i2p i2p > /dev/null 2>&1
 #fi
-echo "i2p i2p/user string i2psvc" | debconf-set-selections
+#echo "i2p i2p/user string i2psvc" | debconf-set-selections
 apt-get --yes upgrade
-apt-get --yes install fail2ban ufw i2p i2p-keyring lynx oracle-java8-installer
+apt-get --yes install fail2ban ufw lynx
+
 
 #Configure SSH
 if [ -e /etc/ssh/sshd_config.backup ]; then
@@ -114,30 +119,36 @@ if service i2p status > /dev/null 2>&1; then :; else
 fi
 
 # Get the configured user from the debconf db
-I2PUSER=$(debconf-show i2p |sed -e '/i2p\/user/!d' -e 's/.*:\s\+//')
+#I2PUSER=$(debconf-show i2p |sed -e '/i2p\/user/!d' -e 's/.*:\s\+//')
 
-if [ $I2PUSER != 'i2psvc' ]; then
-    I2PHOME=$(getent passwd $I2PUSER | awk -F: '{print $6}')
-else
-    I2PHOME="/var/lib/i2p/i2p-config"
-fi
+#if [ $I2PUSER != 'i2psvc' ]; then
+#    I2PHOME=$(getent passwd $I2PUSER | awk -F: '{print $6}')
+#else
+#    I2PHOME="/var/lib/i2p/i2p-config"
+#fi
+
+###User input chooses port number####
+###Give selection of viable numbers####
 
 #Check to ensure config file has generated before setting firewall rules
-# Wait up to 10 seconds for router.config to be created.
-wait_until 10 "test -e /var/lib/i2p/i2p-config/router.config"
-i2pport=$(awk -F= '/i2np\.udp\.port/{print $2}' $I2PHOME/router.config)
+# Wait up to 30 seconds for router.config to be created.
+#wait_until 30 "test -e /var/lib/i2p/i2p-config/router.config"
+#i2pport=$(awk -F= '/i2np\.udp\.port/{print $2}' $I2PHOME/router.config)
 
-if [ x$i2pport = 'x' ]; then
-    echo "Error determining I2P's UDP port" >&2
-    exit 1
-else
-    echo "The I2P port is $i2pport"
-fi
+#if [ x$i2pport = 'x' ]; then
+#    echo "Error determining I2P's UDP port" >&2
+#    exit 1
+#else
+#    echo "The I2P port is $i2pport"
+#fi
 
 #Set firewall rules to allow SSH and I2P
 ufw default deny
 ufw allow 2121
 ufw allow 7657
+ufw allow 4444
+ufw allow 4445
+####User input on port below####
 ufw allow $i2pport
 
 #Reload Fail2ban and SSH
@@ -152,17 +163,19 @@ sleep 5
 ufw enable
 echo
 
+###Figure this with b32 schema###
+
+
 #Open Lynx For Bandwidth Configuration
-echo "Lynx will open so that I2P's bandwidth settings can be configured." >&2
-echo '(385KBps will be about 1TB per month)' >&2
-echo -n "Press y when ready: "
-read ans
-case $ans in
-    y*|Y*|t*|T*)
-        lynx -accept_all_cookies http://127.0.0.1:7657/config
-        ;;
-    *)
-        exit 0
-        ;;
-esac
+#echo "Lynx will open so that I2P can be configured." >&2
+#echo -n "Press y when ready: "
+#read ans
+#case $ans in
+#    y*|Y*|t*|T*)
+#        lynx -accept_all_cookies http://127.0.0.1:7657/config
+#        ;;
+#    *)
+#        exit 0
+#        ;;
+#esac
 
