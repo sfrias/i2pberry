@@ -33,7 +33,7 @@ Mirror: http://git.repo.i2p/w/i2pberry.git
        ports
    - Automate opening console to network traffic, with user input.
 
-I love suggustions!
+I love suggestions!
 
 
 
