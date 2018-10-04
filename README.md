@@ -1,4 +1,4 @@
-#####I2Pberry
+# I2Pberry
 
 VJ2.1.1r1: https://github.com/m6urns/i2pberry/blob/master/torrents/i2pberry_VJ2.1.1r1.img.zip.torrent?raw=true
 
@@ -9,7 +9,7 @@ torrents directory.
 
 Mirror: http://git.repo.i2p/w/i2pberry.git
 
-#####Features
+## Features
    
    - Fully featured installation of I2P
    - Fail2ban for login monitoring
@@ -18,7 +18,7 @@ Mirror: http://git.repo.i2p/w/i2pberry.git
 
    Thanks to David at https://github.com/TheTinHat for the updated installation  script!
 
-#####Working On
+## Working On
 
    - Version taking advantage of I2Pd
      - I've been watching the development of i2pd and I'm waiting 
@@ -37,7 +37,7 @@ I love suggustions!
 
 
 
-###Setup
+## Setup
 
    user:raspberry
 
